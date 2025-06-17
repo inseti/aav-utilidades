@@ -1,0 +1,1527 @@
+/**
+ * AAV Utilidades - Estilos principales
+ * Version: 3.0
+ * Author: Digitis
+ */
+
+/* ==========================================================================
+   Base: Establecer rem = texto normal
+   ========================================================================== */
+html {
+    /* 17px en mobile → 19px en desktop */
+    font-size: clamp(17px, 16px + 0.3vw, 19px) !important;
+}
+
+/* Forzar el tamaño base en el body */
+body.aav-single-post {
+    font-size: 1rem !important;
+}
+
+/* ==========================================================================
+   Variables CSS
+   ========================================================================== */
+:root {
+    /* Colores */
+    --aav-primary: #ff7700;
+    --aav-text: #444444;
+    --aav-heading: #000000;
+    --aav-gray: #666;
+    --aav-border: #e5e5e5;
+    --aav-bg-light: #f8f9fa;
+    --aav-bg-warning: #fff3cd;
+    --aav-bg-info: #d1ecf1;
+    --aav-bg-important: #f8d7da;
+    
+    /* Layout */
+    --aav-sidebar-width: 369px; /* 345px + 24px padding izquierdo del TOC */
+    --aav-gap: 40px; /* Gap específico de 40px */
+    --aav-content-padding: 3rem;
+    --aav-content-width: 865px; /* Ancho específico del contenido */
+    
+    /* Tipografía basada en rem */
+    --aav-font-size: 1rem;           /* 19px/17px base */
+    --aav-line-height: 1.6rem;       /* 30.4px */
+    
+    --aav-h1-size: 2rem;             /* 38px */
+    --aav-h1-height: 2.6rem;         /* 49.4px */
+    
+    --aav-h2-size: 1.5rem;           /* 28.5px */
+    --aav-h2-height: 1.95rem;        /* 37.05px */
+    
+    --aav-h3-size: 1.25rem;          /* 23.75px */
+    --aav-h3-height: 1.625rem;       /* 30.875px */
+    
+    --aav-meta-size: 0.9rem;         /* 17.1px */
+    --aav-meta-height: 1.44rem;      /* 27.36px */
+}
+
+/* ==========================================================================
+   Ocultar elementos duplicados del tema Flatsome
+   ========================================================================== */
+.aav-single-post .entry-header .entry-header-text,
+.aav-single-post .entry-header .entry-title,
+.aav-single-post .entry-header .entry-meta,
+.aav-single-post .entry-header .entry-divider {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Ajustes de contenedores del tema
+   ========================================================================== */
+.aav-single-post #content .large-10.col {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.aav-single-post .row {
+    max-width: 100% !important;
+    width: 100%;
+}
+
+.aav-single-post #content.blog-wrapper {
+    padding-top: 0 !important;
+}
+
+.aav-single-post .article-inner {
+    padding-top: 0;
+}
+
+.aav-single-post #content .col,
+.aav-single-post #content .columns {
+    padding: 0 !important;
+}
+
+/* ==========================================================================
+   Layout Base
+   ========================================================================== */
+.aav-layout {
+    display: grid;
+    grid-template-columns: var(--aav-sidebar-width) var(--aav-content-width);
+    gap: var(--aav-gap);
+    width: 100%;
+    max-width: calc(var(--aav-sidebar-width) + var(--aav-gap) + var(--aav-content-width)); /* 1305px total */
+    margin: 0 auto;
+}
+
+/* Sidebar */
+.aav-sidebar {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+}
+
+/* Contenido principal */
+.aav-content {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    padding: 2.5rem;
+    min-width: 0;
+    width: var(--aav-content-width);
+    max-width: 100%; /* Para responsive */
+}
+
+/* ==========================================================================
+   Título y Meta del Post - MODIFICADO
+   ========================================================================== */
+.aav-post-title {
+    font-size: var(--aav-h1-size);
+    line-height: var(--aav-h1-height);
+    font-weight: 500;
+    margin: 0 0 1rem 0;
+    color: var(--aav-heading);
+}
+
+.aav-post-meta {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--aav-border);
+}
+
+/* Primera fila del meta */
+.aav-meta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-size: var(--aav-meta-size);
+    line-height: var(--aav-meta-height);
+    color: var(--aav-gray);
+}
+
+/* Ocultar los BR no deseados */
+.aav-post-meta br {
+    display: none !important;
+}
+
+.aav-meta-row span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.aav-icon {
+    width: calc(var(--aav-meta-size) * 1.2);
+    height: calc(var(--aav-meta-size) * 1.2);
+    flex-shrink: 0;
+    stroke: var(--aav-gray);
+}
+
+.aav-post-meta a {
+    color: var(--aav-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.aav-post-meta a:hover {
+    text-decoration: underline;
+}
+
+/* Expertos en meta */
+.aav-meta-experts {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.aav-experts-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--aav-gray);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.aav-experts-toggle:hover {
+    text-decoration: underline;
+}
+
+.aav-chevron-small {
+    width: 20px;
+    height: 20px;
+    stroke: var(--aav-gray);
+    transition: transform 0.3s ease;
+}
+
+.aav-experts-toggle[aria-expanded="true"] .aav-chevron-small {
+    transform: rotate(180deg);
+}
+
+/* Lista de expertos - REDISEÑADO */
+.aav-experts-list {
+    display: none;
+    margin-top: 1rem;
+}
+
+/* Mostrar cuando tiene la clase show */
+.aav-experts-list.show {
+    display: block !important;
+}
+
+/* Card unificada de expertos */
+.aav-experts-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Item individual de experto - COMPACTO */
+.aav-expert-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Último item sin borde */
+.aav-expert-item.last {
+    border-bottom: none;
+}
+
+.aav-expert-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.aav-expert-photo-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 15px;
+}
+
+.aav-expert-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.6;
+}
+
+.aav-expert-info {
+    flex: 1;
+    min-width: 0; /* Para prevenir overflow */
+}
+
+/* Textos más compactos */
+.aav-expert-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    color: var(--aav-heading);
+    line-height: 1.3;
+}
+
+.aav-expert-bio {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--aav-text);
+    margin: 0 0 0.5rem 0;
+}
+
+.aav-expert-contact {
+    display: inline-block;
+    color: var(--aav-primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.aav-expert-contact:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   TOC (Table of Contents)
+   ========================================================================== */
+.aav-toc {
+    font-size: var(--aav-font-size);
+    line-height: var(--aav-line-height);
+    background: transparent;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    margin-top: 1.25rem;
+}
+
+.aav-toc-title {
+    font-size: var(--aav-font-size);
+    line-height: var(--aav-line-height);
+    font-weight: 500;
+    margin: 0 0 1rem 0;
+    color: var(--aav-heading);
+}
+
+.aav-toc-toggle-wrapper {
+    display: none;
+}
+
+/* RESET COMPLETO de listas ordenadas */
+.aav-toc ol,
+.aav-toc-list {
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Quitar CUALQUIER numeración que pueda venir del navegador */
+.aav-toc ol::before,
+.aav-toc-list::before,
+.aav-toc li::before {
+    content: none !important;
+}
+
+/* Reset de contadores por si acaso */
+.aav-toc {
+    counter-reset: none !important;
+}
+
+.aav-toc li {
+    counter-increment: none !important;
+    position: relative;
+    margin-left: 0 !important;
+    margin-bottom: 0 !important; /* Sin espacio entre items */
+}
+
+/* Enlaces del TOC - MÁS COMPACTOS */
+.aav-toc-list a {
+    display: block;
+    padding: 0.25rem 3rem 0.25rem 1.25rem; /* Más espacio a la derecha para el chevron */
+    color: var(--aav-text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* SOLO DASH, NADA DE NÚMEROS */
+.aav-toc-list > li > a::before,
+.aav-toc-list ol li a::before {
+    content: "–" !important;
+    position: absolute;
+    left: 0;
+    color: var(--aav-gray);
+}
+
+/* CHEVRON SVG INLINE */
+.aav-chevron {
+    position: absolute;
+    right: 0; /* Pegado al borde derecho */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    stroke: var(--aav-gray);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+/* Chevron rotado cuando expandido */
+.aav-toc-list > li.has-children.expanded .aav-chevron {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Eliminar el pseudo-elemento after ya que usamos SVG inline */
+.aav-toc-list > li.has-children > a::after {
+    display: none !important;
+}
+
+/* Estado hover - SOLO SUBRAYADO */
+.aav-toc-list a:hover {
+    text-decoration: underline;
+    color: var(--aav-text); /* Mantener el color original */
+}
+
+/* Estado ACTIVO - mantener color original con negrita */
+.aav-toc-list a.active {
+    font-weight: 700 !important;
+}
+
+/* Subitems H3 - OCULTOS POR DEFECTO */
+.aav-toc-list > li > ol {
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 0 0 1.5rem !important;
+    display: none;
+    transition: max-height 0.3s ease;
+}
+
+/* Reducir espacio entre subitems */
+.aav-toc-list > li > ol li {
+    margin-bottom: 0 !important;
+}
+
+/* Mostrar cuando expandido */
+.aav-toc-list > li.expanded > ol {
+    display: block;
+}
+
+/* Enlaces de subitems - MÁS COMPACTOS */
+.aav-toc-list ol a {
+    padding: 0.2rem 1rem 0.2rem 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.3;
+}
+
+/* También activo para subitems */
+.aav-toc-list ol a.active {
+    font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   Contenido del post
+   ========================================================================== */
+.aav-post-content {
+    font-size: var(--aav-font-size) !important;
+    line-height: var(--aav-line-height) !important;
+    color: var(--aav-text) !important;
+}
+
+/* Imagen destacada */
+.aav-featured-image {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.aav-featured-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Placeholder cuando no hay imagen */
+.aav-featured-image-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.aav-post-content p,
+.aav-post-content li,
+.aav-post-content td,
+.aav-post-content dd {
+    font-size: inherit !important;
+    line-height: inherit !important;
+    color: var(--aav-text) !important;
+}
+
+.aav-post-content h1,
+.aav-single-post .aav-content h1 {
+    font-size: var(--aav-h1-size) !important;
+    line-height: var(--aav-h1-height) !important;
+    color: var(--aav-heading) !important;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+.aav-post-content h2,
+.aav-single-post .aav-content h2 {
+    font-size: var(--aav-h2-size) !important;
+    line-height: var(--aav-h2-height) !important;
+    color: var(--aav-heading) !important;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.aav-post-content h3,
+.aav-single-post .aav-content h3 {
+    font-size: var(--aav-h3-size) !important;
+    line-height: var(--aav-h3-height) !important;
+    color: var(--aav-heading) !important;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.aav-post-content h4,
+.aav-single-post .aav-content h4 {
+    font-size: var(--aav-font-size) !important;
+    line-height: var(--aav-line-height) !important;
+    color: var(--aav-heading) !important;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.aav-post-content p {
+    margin-bottom: 1.25rem;
+}
+
+.aav-post-content ul,
+.aav-post-content ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+    list-style: none;
+}
+
+.aav-post-content li,
+.aav-single-post .entry-content ul li,
+.aav-single-post .entry-content ol li {
+    margin-bottom: 0.5rem;
+    margin-left: 0 !important;
+    position: relative;
+    padding-left: 0;
+}
+
+/* Bullets personalizados para listas */
+.aav-post-content ul > li::before,
+.aav-single-post .entry-content ul > li::before {
+    content: "–";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--aav-gray);
+}
+
+/* Números para listas ordenadas */
+.aav-post-content ol,
+.aav-single-post .entry-content ol {
+    counter-reset: ol-counter;
+}
+
+.aav-post-content ol > li,
+.aav-single-post .entry-content ol > li {
+    counter-increment: ol-counter;
+}
+
+.aav-post-content ol > li::before,
+.aav-single-post .entry-content ol > li::before {
+    content: counter(ol-counter) ".";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--aav-gray);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Shortcodes de Contenido
+   ========================================================================== */
+
+/* [glosario] - Términos del glosario */
+.aav-glossary-term {
+    cursor: help;
+    border-bottom: 1px dotted var(--aav-primary);
+    color: var(--aav-primary);
+    transition: all 0.2s ease;
+}
+
+.aav-glossary-term:hover,
+.aav-glossary-term:focus {
+    background-color: rgba(255, 119, 0, 0.1);
+    outline: none;
+}
+
+/* [arrow_link] - Enlaces con flecha */
+.aav-arrow-link {
+    color: var(--aav-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.aav-arrow-link:hover {
+    text-decoration: underline;
+}
+
+.aav-arrow-link .aav-arrow {
+    display: inline-block;
+    margin-left: 0.25rem;
+    transition: transform 0.2s ease;
+}
+
+.aav-arrow-link:hover .aav-arrow {
+    transform: translateX(3px);
+}
+
+/* [destacado] - Bloques destacados */
+.aav-destacado {
+    background-color: var(--aav-bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.aav-destacado p:last-child {
+    margin-bottom: 0;
+}
+
+.aav-destacado-borde {
+    border-left: 4px solid var(--aav-primary);
+    border-radius: 0;
+}
+
+/* [destacado_footer] - Destacado al final */
+.aav-destacado-footer {
+    background-color: var(--aav-bg-light);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 3rem 0 2rem 0;
+    text-align: center;
+}
+
+/* [caja_info] - Cajas de información */
+.aav-info-box {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    border: 1px solid;
+}
+
+.aav-info-box .aav-info-icon {
+    flex-shrink: 0;
+}
+
+.aav-info-box .aav-info-content {
+    flex: 1;
+}
+
+.aav-info-box .aav-info-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Tipos de caja */
+.aav-info-aviso {
+    background-color: var(--aav-bg-warning);
+    border-color: #ffeaa7;
+    color: #856404;
+}
+
+.aav-info-aviso .aav-info-icon svg {
+    stroke: #856404;
+}
+
+.aav-info-consejo {
+    background-color: var(--aav-bg-info);
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+.aav-info-consejo .aav-info-icon svg {
+    stroke: #0c5460;
+}
+
+.aav-info-importante {
+    background-color: var(--aav-bg-important);
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.aav-info-importante .aav-info-icon svg {
+    stroke: #721c24;
+}
+
+/* [pasos] - Lista de pasos */
+.aav-steps-list {
+    counter-reset: steps-counter;
+    list-style: none !important;
+    padding-left: 3rem !important;
+    margin: 1.5rem 0;
+}
+
+.aav-steps-list li {
+    counter-increment: steps-counter;
+    position: relative;
+    padding-left: 0;
+    margin-bottom: 1rem;
+}
+
+.aav-steps-list li::before {
+    content: counter(steps-counter) !important;
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--aav-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* [documentos] - Lista de documentos */
+.aav-documents-list {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 1.5rem 0;
+}
+
+.aav-documents-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.aav-documents-list li::before {
+    content: "□" !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: var(--aav-gray);
+}
+
+.aav-documents-list li.checked::before {
+    content: "✓" !important;
+    color: #28a745;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Sistema de Footnotes
+   ========================================================================== */
+.aav-footnote-ref {
+    font-size: 0.75rem;
+    vertical-align: super;
+    line-height: 0;
+}
+
+.aav-footnote-ref a {
+    color: var(--aav-primary);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0 0.2rem;
+}
+
+.aav-footnote-ref a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Bloques del Footer
+   ========================================================================== */
+
+/* Bloque de donación */
+.aav-donation-block {
+    background-color: var(--aav-bg-light);
+    border-radius: 8px;
+    padding: 2.5rem;
+    text-align: center;
+    margin: 3rem 0 2rem 0;
+}
+
+.aav-donation-block h3 {
+    font-size: var(--aav-h3-size);
+    margin: 0 0 1rem 0;
+    color: var(--aav-heading);
+}
+
+.aav-donation-block p {
+    margin-bottom: 1.5rem;
+    color: var(--aav-gray);
+}
+
+.aav-donation-button {
+    display: inline-block;
+    background-color: var(--aav-primary);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.aav-donation-button:hover {
+    background-color: #e56600;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 119, 0, 0.3);
+}
+
+/* Bloque de referencias */
+.aav-references-block {
+    border-top: 1px solid var(--aav-border);
+    padding-top: 2rem;
+    margin: 2rem 0;
+}
+
+.aav-references-toggle {
+    font-size: var(--aav-h3-size);
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    color: var(--aav-heading);
+    user-select: none;
+}
+
+.aav-references-toggle:hover {
+    color: var(--aav-primary);
+}
+
+.aav-toggle-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.aav-references-toggle[aria-expanded="true"] .aav-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.aav-references-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.aav-references-content.expanded {
+    max-height: 1000px;
+}
+
+.aav-references-list {
+    padding-left: 1.5rem !important;
+    margin: 1rem 0 0 0;
+}
+
+.aav-references-list li {
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.aav-back-link {
+    margin-left: 0.5rem;
+    color: var(--aav-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.aav-back-link:hover {
+    text-decoration: underline;
+}
+
+/* Guías relacionadas */
+.aav-related-guides {
+    margin: 3rem 0 2rem 0;
+}
+
+.aav-related-guides h3 {
+    font-size: var(--aav-h3-size);
+    margin: 0 0 1.5rem 0;
+    color: var(--aav-heading);
+}
+
+.aav-guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.aav-guide-card {
+    background: var(--aav-bg-light);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.aav-guide-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.aav-guide-card a {
+    display: block;
+    padding: 1.5rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.aav-guide-card h4 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--aav-heading);
+}
+
+.aav-guide-card p {
+    margin: 0;
+    color: var(--aav-gray);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Modal del Formulario de Contacto
+   ========================================================================== */
+.aav-contact-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.aav-contact-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.aav-contact-modal {
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.aav-contact-modal-overlay.active .aav-contact-modal {
+    transform: scale(1);
+}
+
+.aav-contact-modal-header {
+    padding: 2rem 2rem 1rem 2rem;
+    border-bottom: 1px solid var(--aav-border);
+}
+
+.aav-contact-modal-title {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--aav-heading);
+}
+
+.aav-contact-modal-subtitle {
+    font-size: 1rem;
+    color: var(--aav-gray);
+    margin: 0;
+}
+
+.aav-contact-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--aav-gray);
+    padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+}
+
+.aav-contact-modal-close:hover {
+    background: var(--aav-bg-light);
+    color: var(--aav-heading);
+}
+
+.aav-contact-modal-body {
+    padding: 2rem;
+}
+
+/* Estilos para el formulario de Gravity Forms dentro del modal */
+.aav-contact-modal .gform_wrapper {
+    margin: 0;
+}
+
+.aav-contact-modal .gform_wrapper .gform_body .gfield {
+    margin-bottom: 1.5rem;
+}
+
+.aav-contact-modal .gform_wrapper .gfield_label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.aav-contact-modal .gform_wrapper input[type="text"],
+.aav-contact-modal .gform_wrapper input[type="email"],
+.aav-contact-modal .gform_wrapper input[type="tel"],
+.aav-contact-modal .gform_wrapper textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.aav-contact-modal .gform_wrapper input[type="text"]:focus,
+.aav-contact-modal .gform_wrapper input[type="email"]:focus,
+.aav-contact-modal .gform_wrapper input[type="tel"]:focus,
+.aav-contact-modal .gform_wrapper textarea:focus {
+    outline: none;
+    border-color: var(--aav-primary);
+    box-shadow: 0 0 0 3px rgba(255, 119, 0, 0.1);
+}
+
+.aav-contact-modal .gform_wrapper textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.aav-contact-modal .gform_wrapper .gform_button {
+    background: var(--aav-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.aav-contact-modal .gform_wrapper .gform_button:hover {
+    background: #e56600;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 119, 0, 0.3);
+}
+
+.aav-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.aav-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.aav-modal {
+    background: white;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.aav-modal-overlay.active .aav-modal {
+    transform: scale(1);
+}
+
+.aav-modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--aav-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aav-modal-title {
+    font-size: var(--aav-h3-size);
+    margin: 0;
+    color: var(--aav-heading);
+}
+
+.aav-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--aav-gray);
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.aav-modal-close:hover {
+    color: var(--aav-heading);
+}
+
+.aav-modal-body {
+    padding: 1.5rem;
+}
+
+.aav-modal-loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--aav-gray);
+}
+
+.aav-glossary-definition {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.aav-glossary-related {
+    border-top: 1px solid var(--aav-border);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.aav-glossary-related h4 {
+    font-size: 1rem;
+    margin: 0 0 1rem 0;
+    color: var(--aav-heading);
+}
+
+.aav-glossary-related ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.aav-glossary-related li {
+    margin-bottom: 0.5rem;
+}
+
+.aav-glossary-related a {
+    color: var(--aav-primary);
+    text-decoration: none;
+}
+
+.aav-glossary-related a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Bloque de donación en sidebar
+   ========================================================================== */
+.aav-sidebar-donation {
+    background-color: var(--aav-bg-light);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0 0 1.5rem; /* Margen izquierdo para alinear con el TOC */
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* Línea divisoria antes del bloque de donación */
+.aav-sidebar-donation::before {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left: -1.5rem; /* Extender la línea hasta el borde */
+    right: 0;
+    height: 1px;
+    background-color: var(--aav-border);
+}
+
+.aav-sidebar-donation .aav-heart {
+    color: #e74c3c;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+.aav-sidebar-donation .aav-donation-text {
+    flex: 1;
+    text-align: left;
+}
+
+.aav-sidebar-donation p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--aav-text);
+}
+
+.aav-sidebar-donation a {
+    color: var(--aav-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.aav-sidebar-donation a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .aav-layout {
+        grid-template-columns: var(--aav-sidebar-width) 1fr; /* Flexible en tablets */
+        gap: 2rem;
+    }
+    
+    .aav-content {
+        width: auto; /* Ancho automático en tablets */
+    }
+    
+    .aav-sidebar {
+        position: static;
+    }
+    
+    .aav-featured-image-placeholder {
+        height: 300px;
+    }
+    
+    .aav-guides-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .aav-single-post #content .col {
+        padding: 0;
+    }
+    
+    .aav-layout {
+        display: block;
+        padding: 1rem;
+    }
+    
+    .aav-sidebar {
+        position: static;
+        margin-bottom: 1.5rem;
+        background: var(--aav-bg-light);
+        border-radius: 8px;
+        padding: 1rem;
+        max-height: none;
+    }
+    
+    .aav-toc {
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+    
+    .aav-toc-title {
+        display: none;
+    }
+    
+    .aav-toc-toggle-wrapper {
+        display: block;
+    }
+    
+    .aav-toc-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem 0;
+        background: none;
+        border: none;
+        font-size: var(--aav-font-size);
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--aav-heading);
+        text-align: left;
+    }
+    
+    .aav-toc-toggle::after {
+        content: "˅";
+        font-size: 1.2rem;
+        color: var(--aav-gray);
+        line-height: 1;
+    }
+    
+    .aav-toc-toggle[aria-expanded="true"]::after {
+        content: "˄";
+    }
+    
+    .aav-toc-list {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    .aav-toc.expanded .aav-toc-list {
+        max-height: 500px;
+        margin-top: 1rem;
+    }
+    
+    .aav-content {
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+    }
+    
+    .aav-featured-image-placeholder {
+        height: 200px;
+    }
+    
+    /* Ajustes para meta en mobile */
+    .aav-post-meta {
+        font-size: 0.85rem;
+    }
+    
+    .aav-meta-row {
+        gap: 1rem;
+    }
+    
+    .aav-meta-row span {
+        flex-basis: 100%;
+    }
+    
+    /* Lista de expertos en mobile */
+    .aav-experts-list {
+        margin-top: 1rem;
+    }
+    
+    .aav-expert-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.75rem;
+    }
+    
+    .aav-expert-photo,
+    .aav-expert-photo-placeholder {
+        margin: 0 auto 0.5rem;
+    }
+    
+    /* Ajustes para shortcodes en mobile */
+    .aav-destacado,
+    .aav-info-box,
+    .aav-destacado-footer {
+        padding: 1rem;
+    }
+    
+    .aav-steps-list {
+        padding-left: 2.5rem !important;
+    }
+    
+    .aav-steps-list li::before {
+        left: -2.5rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Bloques del footer en mobile */
+    .aav-donation-block {
+        padding: 1.5rem;
+    }
+    
+    .aav-guides-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .aav-guide-card a {
+        padding: 1rem;
+    }
+    
+    /* Modal en mobile */
+    .aav-modal {
+        width: 95%;
+        max-height: 90vh;
+    }
+}
+
+/* ==========================================================================
+   Ajustes globales de tipografía - Mayor especificidad
+   ========================================================================== */
+.aav-single-post,
+.aav-single-post .entry-content,
+.aav-single-post .article-inner {
+    font-size: var(--aav-font-size) !important;
+    line-height: var(--aav-line-height) !important;
+    color: var(--aav-text) !important;
+}
+
+.aav-single-post p,
+.aav-single-post li,
+.aav-single-post td,
+.aav-single-post dd,
+.aav-single-post .entry-content p,
+.aav-single-post .entry-content li,
+.aav-single-post .entry-content td,
+.aav-single-post .entry-content dd {
+    font-size: var(--aav-font-size) !important;
+    line-height: var(--aav-line-height) !important;
+    color: var(--aav-text) !important;
+}
+
+.aav-single-post h1,
+.aav-single-post .entry-content h1 {
+    font-size: var(--aav-h1-size) !important;
+    line-height: var(--aav-h1-height) !important;
+    color: var(--aav-heading) !important;
+}
+
+.aav-single-post h2,
+.aav-single-post .entry-content h2 {
+    font-size: var(--aav-h2-size) !important;
+    line-height: var(--aav-h2-height) !important;
+    color: var(--aav-heading) !important;
+}
+
+.aav-single-post h3,
+.aav-single-post .entry-content h3 {
+    font-size: var(--aav-h3-size) !important;
+    line-height: var(--aav-h3-height) !important;
+    color: var(--aav-heading) !important;
+}
+
+.aav-single-post h4,
+.aav-single-post .entry-content h4 {
+    font-size: var(--aav-font-size) !important;
+    line-height: var(--aav-line-height) !important;
+    color: var(--aav-heading) !important;
+    font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   Utilidades
+   ========================================================================== */
+.aav-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ==========================================================================
+   Animaciones
+   ========================================================================== */
+@keyframes aav-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.aav-modal-body > * {
+    animation: aav-fade-in 0.3s ease forwards;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+@media print {
+    .aav-sidebar,
+    .aav-donation-block,
+    .aav-related-guides,
+    .aav-modal-overlay {
+        display: none !important;
+    }
+    
+    .aav-layout {
+        display: block;
+    }
+    
+    .aav-content {
+        box-shadow: none;
+        padding: 0;
+    }
+    
+    .aav-references-content {
+        max-height: none !important;
+    }
+}
